@@ -4,7 +4,7 @@ A web app where people come to offer one hour of their time for an hour of what 
 
 ### Problem Statement
 
-The aim of the project is to introduce a new approach to online learning. Online learning is currently booming with more and more people taking it up for both personal and professional reasons. While online learning has its strength and helped many achieve their goals.
+The aim of the project is to introduce a new approach to online learning. Online learning is currently booming with more and more people taking it up for both personal and professional reasons.
 
 Majority of online learning happens with prerecorded materials and while it certainly has its pros, what it can’t replace is the experience of learning on a one to one setting that not only helps us learn but has the potential to extend our social connection, improve interpersonal skills and build lasting friendships with whom we learn and share our skills with.
 
