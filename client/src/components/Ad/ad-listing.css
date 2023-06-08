@@ -1,0 +1,51 @@
+.ad-container {
+  width: 600px;
+  display: inline-flex;
+  flex-direction: column;
+  margin: 20px;
+}
+.ad-container-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  border: 1.5px solid black;
+  border-radius: 20px 20px 0px 0px;
+  justify-content: space-between;
+}
+
+.ad-image {
+  height: 50px;
+  border-radius: 50px;
+}
+
+.expand {
+  cursor: pointer;
+}
+
+.ad-container-bottom {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 0px 0px 20px 20px;
+  border: 1.5px solid black;
+}
+
+.ad-info {
+  border-left: 1.5px solid black;
+  border-right: 1.5px solid black;
+  padding: 10px;
+}
+
+/* .ad-info > p {
+  margin-bottom: 10px;
+} */
+
+.ad-user-tagline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
