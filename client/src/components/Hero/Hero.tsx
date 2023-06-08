@@ -12,7 +12,11 @@ export default function Hero() {
       <video playsInline={true} autoPlay={true} muted={true} loop={true}>
         <source src={random(videos)}></source>
       </video>
-      <div className="hero-content-container"> This is a test </div>
+      <div className="hero-content-container">
+        <div className="main-text"> Hour One</div>
+        <div className="sub-text">Learning together begins now</div>
+        <button className="explore-btn">Explore</button>
+      </div>
     </div>
   );
 }
