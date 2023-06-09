@@ -1,0 +1,30 @@
+.search-form {
+  display: inline-flex;
+  border: 2px solid grey;
+  border-radius: 25px;
+  padding: 10px;
+}
+
+.search-form:hover {
+  border: 2px solid black;
+}
+.search-box {
+  font-family: inherit;
+  margin-left: 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: black;
+}
+
+.search-box::-webkit-search-decoration,
+.search-box::-webkit-search-cancel-button,
+.search-box::-webkit-search-results-button,
+.search-box::-webkit-search-results-decoration {
+  display: none;
+}
+
+.search-icon {
+  margin-right: 10px;
+  color: black;
+}

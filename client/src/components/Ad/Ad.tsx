@@ -23,15 +23,17 @@ export default function Ad({ ad }) {
           <img className="ad-image" src={ad.imageUrl} alt="user" />
           <p>{ad.tagline}</p>
         </div>
-
-        <span
-          className="material-symbols-outlined expand"
-          onClick={() => {
-            setIsExpanded(!isExpanded);
-          }}
-        >
-          expand_circle_down
-        </span>
+        <div className="ad-offer-expand">
+          <div className="ad-offer">{ad.offer}</div>
+          <span
+            className="material-symbols-outlined expand"
+            onClick={() => {
+              setIsExpanded(!isExpanded);
+            }}
+          >
+            expand_circle_down
+          </span>
+        </div>
       </div>
       {isExpanded && <div className="ad-info">{ad.message}</div>}
       <div className="ad-container-bottom">

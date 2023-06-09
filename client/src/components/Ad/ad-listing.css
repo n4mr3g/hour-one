@@ -12,11 +12,28 @@
   border: 1.5px solid black;
   border-radius: 20px 20px 0px 0px;
   justify-content: space-between;
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
 .ad-image {
   height: 50px;
   border-radius: 50px;
+}
+
+.ad-offer {
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: px;
+}
+
+.ad-offer-expand {
+  display: flex;
+  gap: 10px;
 }
 
 .expand {

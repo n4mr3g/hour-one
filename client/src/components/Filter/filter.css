@@ -1,0 +1,29 @@
+.filter-container {
+  width: 150px;
+  border: 2px solid black;
+  display: inline-flex;
+  flex-direction: column;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.filter-title {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.filter-options {
+  padding: 20px;
+}
+
+.filter-teach {
+  margin-bottom: 10px;
+}
+
+.filter-selected {
+  border-right: 2px solid black;
+  font-weight: 600;
+}

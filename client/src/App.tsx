@@ -1,7 +1,9 @@
 import "./App.css";
-import Hero from "./components/Hero/Hero";
+
 import { useEffect, useState } from "react";
 import Ad from "./components/Ad/Ad";
+import Navigation from "./components/Navigation/Navigation";
+import Filter from "./components/Filter/Filter";
 export default function App() {
   const [ads, setAds] = useState([]);
 
@@ -15,11 +17,15 @@ export default function App() {
   }, []);
   return (
     <div>
-      <Hero></Hero>
-      <div className="listing">
-        {ads.map((ad) => (
-          <Ad ad={ad}></Ad>
-        ))}
+      <Navigation />
+
+      <div>
+        <Filter />
+        <div className="listing">
+          {ads.map((ad) => (
+            <Ad ad={ad}></Ad>
+          ))}
+        </div>
       </div>
     </div>
   );

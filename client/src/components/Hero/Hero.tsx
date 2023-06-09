@@ -5,6 +5,8 @@ import Cook from "../../assets/cook.mp4";
 import Study from "../../assets/study.mp4";
 import { random } from "../../utils/utils";
 
+import { Link } from "react-router-dom";
+
 export default function Hero() {
   const videos = [Dance, Ski, Cook, Study];
   return (
@@ -15,7 +17,9 @@ export default function Hero() {
       <div className="hero-content-container">
         <div className="main-text"> Hour One</div>
         <div className="sub-text">Learning together begins now</div>
-        <button className="explore-btn">Explore</button>
+        <Link to={"/app"} className="explore-btn">
+          Explore
+        </Link>
       </div>
     </div>
   );
