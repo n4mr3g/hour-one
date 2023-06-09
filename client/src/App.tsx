@@ -1,4 +1,5 @@
-// import Hero from "./components/Hero/Hero";
+import "./App.css";
+import Hero from "./components/Hero/Hero";
 import { useEffect, useState } from "react";
 import Ad from "./components/Ad/Ad";
 export default function App() {
@@ -14,10 +15,12 @@ export default function App() {
   }, []);
   return (
     <div>
-      {/* <Hero></Hero> */}
-      {ads.map((ad) => (
-        <Ad ad={ad}></Ad>
-      ))}
+      <Hero></Hero>
+      <div className="listing">
+        {ads.map((ad) => (
+          <Ad ad={ad}></Ad>
+        ))}
+      </div>
     </div>
   );
 }
