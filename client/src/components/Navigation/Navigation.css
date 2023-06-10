@@ -9,3 +9,20 @@
   display: flex;
   gap: 20px;
 }
+
+.my-list {
+  text-decoration: none;
+  color: black;
+}
+
+.list-count {
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 25px;
+  position: relative;
+  bottom: 8px;
+  right: 2px;
+  font-size: 10px;
+}
