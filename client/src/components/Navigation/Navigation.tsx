@@ -21,7 +21,7 @@ export default function Navigation() {
 
         <img
           className="user-image"
-          src={"https://i.pravatar.cc/150?50=fake@pravatar.com"}
+          src={"https://i.pravatar.cc/150?u=30@pravatar.com"}
           alt="user"
         />
       </div>
