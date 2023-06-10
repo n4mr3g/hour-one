@@ -26,3 +26,14 @@
   right: 2px;
   font-size: 10px;
 }
+
+.user-image {
+  height: 50px;
+  border-radius: 50px;
+}
+
+.mylist-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
