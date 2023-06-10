@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import ErrorPage from "./routes/ErrorPage.tsx";
+import Dashboard from "./components/Dashboard/Dashboard.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/app",
     element: <App />,
+  },
+  {
+    path: "/app/dashboard",
+    element: <Dashboard />,
   },
 ]);
 

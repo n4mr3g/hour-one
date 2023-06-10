@@ -18,8 +18,7 @@ export default function App() {
   return (
     <div>
       <Navigation />
-
-      <div>
+      <div className="app-view">
         <Filter />
         <div className="listing">
           {ads.map((ad) => (

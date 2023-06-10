@@ -4,18 +4,6 @@ import "./ad-listing.css";
 export default function Ad({ ad }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // const mock = {
-  //   imageUrl: "https://i.pravatar.cc/150?u=1@pravatar.com",
-  //   tagline: "Japanese cooking for basic guitar",
-  //   message: `
-  //   Hi There,
-  //   I wanted to learn a bit of japanese cooking. I am interested in soups
-  //   and sushi the most but I am open to other options as well.
-  //   In return I am happy to teach you some basic guitar we can cover the
-  //   major chords and a few songs.
-  //   looking forward to hearing from you`,
-  //   interests: `Make an offer for other learnings`,
-  // };
   return (
     <div className="ad-container">
       <div className="ad-container-top">
@@ -37,8 +25,11 @@ export default function Ad({ ad }) {
       </div>
       {isExpanded && <div className="ad-info">{ad.message}</div>}
       <div className="ad-container-bottom">
-        <span className="material-symbols-outlined">interests</span>
-        <p> {ad.interests} </p>
+        <button className="connect-btn">Connect</button>
+        <div className="interests-logo-message">
+          <p> {ad.interests} </p>
+          <span className="material-symbols-outlined">interests</span>
+        </div>
       </div>
     </div>
   );

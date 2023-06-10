@@ -7,9 +7,10 @@ export default function Navigation() {
       <div>Logo</div>
       <SearchBar />
       <div className="nav-options">
-        <div>About</div>
-        <div>Sign in</div>
-        <div>Sign up</div>
+        <div>My Exchange</div>
+        <div>
+          <span className="material-symbols-outlined">account_circle</span>
+        </div>
       </div>
     </div>
   );
