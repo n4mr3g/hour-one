@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./ad-listing.css";
 
+//TODO find a better name for ad
+
 export default function Ad({ ad }) {
   const [isExpanded, setIsExpanded] = useState(false);
 

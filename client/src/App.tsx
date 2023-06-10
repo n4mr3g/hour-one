@@ -22,7 +22,7 @@ export default function App() {
         <Filter />
         <div className="listing">
           {ads.map((ad) => (
-            <Ad ad={ad}></Ad>
+            <Ad ad={ad} key={crypto.randomUUID()}></Ad>
           ))}
         </div>
       </div>

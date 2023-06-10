@@ -7,12 +7,12 @@ export default function Navigation() {
   const [listCount, setListCount] = useState(8);
   return (
     <div className="navigation-container">
-      <div>Logo</div>
+      <div className="logo">Hour One</div>
       <SearchBar />
       <div className="nav-options">
         <div className="mylist-wrapper">
-          <Link to={"/"} className="my-list">
-            My List
+          <Link to={"/app/dashboard"} className="my-list">
+            Dashboard
           </Link>
           <div className={listCount > 0 ? "list-count" : ""}>
             {listCount > 0 ? listCount : ""}
@@ -21,7 +21,7 @@ export default function Navigation() {
 
         <img
           className="user-image"
-          src={"https://i.pravatar.cc/150?u=30@pravatar.com"}
+          src={"https://i.pravatar.cc/150?u=17@pravatar.com"}
           alt="user"
         />
       </div>

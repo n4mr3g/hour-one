@@ -5,6 +5,12 @@
   margin: 20px;
 }
 
+.logo {
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+
 .nav-options {
   display: flex;
   gap: 20px;
@@ -22,8 +28,8 @@
   padding: 1px 6px;
   border-radius: 25px;
   position: relative;
-  bottom: 8px;
-  right: 2px;
+  bottom: 13px;
+  right: -1px;
   font-size: 10px;
 }
 
