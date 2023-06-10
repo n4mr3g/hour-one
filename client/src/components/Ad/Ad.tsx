@@ -28,7 +28,9 @@ export default function Ad({ ad }) {
         <button className="connect-btn">Connect</button>
         <div className="interests-logo-message">
           <p> {ad.interests} </p>
-          <span className="material-symbols-outlined">interests</span>
+          <span className="material-symbols-outlined favorite">
+            playlist_add_check
+          </span>
         </div>
       </div>
     </div>
@@ -37,4 +39,5 @@ export default function Ad({ ad }) {
 
 {
   /* <span class="material-symbols-outlined">expand_circle_up</span>; */
+  // <span class="material-symbols-outlined">playlist_add_check</span>;
 }
