@@ -31,7 +31,7 @@ export default function Ad({ ad }) {
         <div className="interests-logo-message">
           <p> {ad.interests} </p>
           <span className="material-symbols-outlined favorite">
-            playlist_add
+            playlist_add_check
           </span>
         </div>
       </div>
