@@ -9,7 +9,7 @@ exports.postOffer = async (req, res) => {
     const offer = req.body;
     const newOffer = await new Offer({
       ...offer,
-      image: `https://i.pravatar.cc/${randomNumber()}u=1@pravatar.com`,
+      image: `https://i.pravatar.cc/200?u=${randomNumber()}@pravatar.com`,
       authorId: Crypto.randomUUID(),
     });
     newOffer.save();
