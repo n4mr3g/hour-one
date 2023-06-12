@@ -27,13 +27,10 @@ const offerSchema = new Schema({
 });
 
 const userSchema = new Schema({
-  firstname: String,
-  lastname: String,
+  name: String,
   email: String,
   password: String,
   image: String,
-  userId: String,
-  passwordConfirm: String,
 });
 
 const User = mongoose.model("User", userSchema);

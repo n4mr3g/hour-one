@@ -7,14 +7,14 @@ exports.postOffer = async (req, res) => {
   try {
     console.log("Saving offer to database...");
     const offer = req.body;
-    const newOffer = await new Offer({
+    const newOffer = new Offer({
       ...offer,
       image: `https://i.pravatar.cc/200?u=${randomNumber()}@pravatar.com`,
       authorId: Crypto.randomUUID(),
     });
-    newOffer.save();
+    const { id } = await newOffer.save();
     res.status(200);
-    res.send({ data: newOffer, error: null });
+    res.send({ data: id, error: null });
   } catch (error) {
     res.status(500);
     console.log(error);
