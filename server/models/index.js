@@ -31,6 +31,8 @@ const userSchema = new Schema({
   email: String,
   password: String,
   image: String,
+  offers: [offerSchema],
+  favourite: [offerSchema],
 });
 
 const User = mongoose.model("User", userSchema);

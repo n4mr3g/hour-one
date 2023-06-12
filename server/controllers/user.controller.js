@@ -25,9 +25,34 @@ exports.create = async (req, res) => {
     const { id } = await newUser.save();
 
     const accessToken = jwt.sign({ id }, SECRET_KEY);
-    res.status(201).send(accessToken);
+    res.status(201).send({ accessToken });
   } catch (error) {
     res.status(400).send({ error, data: "Could not create user" });
+  }
+};
+
+exports.login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    const validatePass = await bcrypt.compare(password, user.password);
+    if (!validatePass) throw new Error();
+    const accessToken = jwt.sign({ id: user.id }, SECRET_KEY);
+    res.status(200);
+    res.send({ accessToken });
+  } catch (error) {
+    res.status(401);
+    res.send({ error, data: "User not found" });
+  }
+};
+
+exports.profile = async (req, res) => {
+  try {
+    const { id, name, email, image, offers, favourite } = req.user;
+    const user = { id, name, email, image, offers, favourite };
+    res.status(200).send(user);
+  } catch (error) {
+    res.status(404).send({ error, data: "Resource not found" });
   }
 };
 
