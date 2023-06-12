@@ -1,11 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const mocks = require("./mocks");
+const controller = require("./controllers/offer.controller");
 
-router.get("/explore", (req, res) => {
-  res.status(200);
-  res.send({ data: mocks, error: null });
-});
+router.get("/offer", controller.getOffer);
+router.post("/offer", controller.postOffer);
 
 module.exports = { router };
