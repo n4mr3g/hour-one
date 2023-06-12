@@ -1,19 +1,26 @@
 import "./Form.css";
 import { useState } from "react";
 
+import { postOffer } from "../../api/apiService";
+
 export default function Form() {
-  const [title, setTitle] = useState("");
+  const [offer, setOffer] = useState("");
   const [type, setType] = useState("Teach");
   const [message, setMessage] = useState("");
-  const [substitute, setSubstitute] = useState("");
+  const [comment, setComment] = useState("");
+  const [author, setAuthor] = useState("John Doe");
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (!title || !type || !message || !substitute) {
+    if (!offer || !type || !message || !comment) {
       alert("Please enter details correctly");
       return;
     }
-    console.log({ title, type, message, substitute });
+    postOffer({ offer, type, message, comment, author });
+    setOffer("");
+    setType("");
+    setMessage("");
+    setComment("");
   }
   return (
     <div className="form-container">
@@ -27,10 +34,10 @@ export default function Form() {
             className="input-box"
             type="text"
             name="title"
-            value={title}
+            value={offer}
             placeholder="Insert a title..."
             onChange={(e) => {
-              setTitle(e.target.value);
+              setOffer(e.target.value);
             }}
           />
         </div>
@@ -69,8 +76,8 @@ export default function Form() {
           <textarea
             id="substitute"
             className="input-box"
-            value={substitute}
-            onChange={(e) => setSubstitute(e.target.value)}
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
             cols="50"
             rows="2"
           ></textarea>

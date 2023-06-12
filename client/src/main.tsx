@@ -1,11 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+
+import "./index.css";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import { Provider } from "react-redux";
+import { legacy_createStore } from "redux";
+import reducers from "./reducers.tsx";
+
 import App from "./App.tsx";
 import ErrorPage from "./routes/ErrorPage.tsx";
 import Dashboard from "./components/Dashboard/Dashboard.tsx";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
-
 import Home from "./routes/Home.tsx";
 import Profile from "./components/Profile/Profile.tsx";
 import Form from "./components/Form/Form.tsx";
@@ -41,8 +47,13 @@ const router = createBrowserRouter([
   },
 ]);
 
+let store = legacy_createStore(
+  reducers
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
+  <Provider store={store}>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </Provider>
 );
