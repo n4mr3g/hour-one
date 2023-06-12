@@ -30,7 +30,7 @@ exports.getOffer = async (req, res) => {
     console.log("getting all offers from db");
     const allOffers = await Offer.find();
     console.log(allOffers);
-    res.status("200");
+    res.status(200);
     res.send({
       data: allOffers,
       error: null,
@@ -43,4 +43,6 @@ exports.getOffer = async (req, res) => {
       error: error.message,
     });
   }
+
+  //TODO need to add the patch, update and delete paths as well.
 };

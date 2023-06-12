@@ -3,10 +3,12 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-// const url = "mongodb://127.0.0.1:27017/hourone";
 const url = process.env.DATABASE_URL;
 async function main() {
-  await mongoose.connect(url);
+  await mongoose.connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 }
 
 main()
