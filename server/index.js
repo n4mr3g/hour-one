@@ -7,7 +7,12 @@ const { router } = require("./router");
 const app = express();
 const port = 4000;
 
-app.use(cors());
+const corsConfig = {
+  origin: "http://localhost:4000",
+  credentials: true,
+};
+
+app.use(cors(corsConfig));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));

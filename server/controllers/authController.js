@@ -15,13 +15,3 @@ exports.signup = async (req, res) => {
     res.send({ data: null, error: error });
   }
 };
-
-exports.getAllUsers = (req, res) => {
-  res.status(500);
-  res.send({
-    data: null,
-    error: "This route is not yet created",
-  });
-};
-
-exports.post("/signup");
