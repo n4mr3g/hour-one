@@ -7,11 +7,11 @@ export default function Navigation() {
   const [listCount, setListCount] = useState(8);
   return (
     <div className="navigation-container">
-      <div className="logo">Hour One</div>
+      <div className="logo same-width">Hour One</div>
       <SearchBar />
-      <div className="nav-options">
+      <div className="nav-options same-width">
         <div className="mylist-wrapper">
-          <Link to={"/app/dashboard"} className="my-list">
+          <Link to={"/app/dashboard/profile"} className="my-list">
             Dashboard
           </Link>
           <div className={listCount > 0 ? "list-count" : ""}>

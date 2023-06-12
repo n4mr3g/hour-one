@@ -7,6 +7,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 
 import Home from "./routes/Home.tsx";
+import Profile from "./components/Profile/Profile.tsx";
+import Form from "./components/Form/Form.tsx";
+import MyList from "./components/MyList/MyList.tsx";
 
 const router = createBrowserRouter([
   {
@@ -19,8 +22,22 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/app/dashboard",
+    path: "/app/dashboard/",
     element: <Dashboard />,
+    children: [
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+      {
+        path: "create",
+        element: <Form />,
+      },
+      {
+        path: "myList",
+        element: <MyList />,
+      },
+    ],
   },
 ]);
 

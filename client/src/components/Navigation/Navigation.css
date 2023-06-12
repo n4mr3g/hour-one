@@ -2,9 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 20px;
+  margin: 20px 40px;
 }
 
+.same-width {
+  width: 150px;
+}
 .logo {
   font-weight: 900;
   letter-spacing: 2px;
@@ -13,7 +16,6 @@
 
 .nav-options {
   display: flex;
-  gap: 20px;
 }
 
 .my-list {

@@ -1,5 +1,4 @@
 .user-menu {
-  border-top: 1px solid grey;
   display: flex;
   padding: 20px;
   justify-content: center;
@@ -18,4 +17,9 @@
 .menu-selected {
   color: black;
   border-bottom: 2px solid black;
+}
+
+.menu-link {
+  text-decoration: none;
+  color: black;
 }

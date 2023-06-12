@@ -32,7 +32,7 @@ export default function Ad({ ad }) {
       <div className="ad-container-bottom">
         <button className="connect-btn">Connect</button>
         <div className="interests-logo-message">
-          <p> {ad.interests} </p>
+          <p> {ad.comment} </p>
           <span className="material-symbols-outlined favorite">
             playlist_add_check
           </span>
