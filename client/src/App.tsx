@@ -8,7 +8,7 @@ export default function App() {
   const [ads, setAds] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/explore")
+    fetch("http://localhost:4000/offer")
       .then((response) => response.json())
       .then((data) => {
         console.log(data.data);

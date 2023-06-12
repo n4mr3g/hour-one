@@ -10,11 +10,14 @@ export default function Ad({ ad }) {
     <div className="ad-container">
       <div className="ad-container-top">
         <div className="ad-user-tagline">
-          <img className="ad-image" src={ad.imageUrl} alt="user" />
-          <p>{ad.tagline}</p>
+          <img className="ad-image" src={ad.image} alt="user" />
+          <div>
+            <p className="ad-offer">{ad.offer}</p>
+            <p className="ad-author">{ad.author}</p>
+          </div>
         </div>
-        <div className="ad-offer-expand">
-          <div className="ad-offer">{ad.offer}</div>
+        <div className="ad-type-expand">
+          <div className="ad-type">{ad.type}</div>
           <span
             className="material-symbols-outlined expand"
             onClick={() => {

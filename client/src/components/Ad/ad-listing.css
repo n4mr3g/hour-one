@@ -23,7 +23,11 @@
   border-radius: 50px;
 }
 
-.ad-offer {
+.ad-author {
+  font-size: 10px;
+}
+
+.ad-type {
   background-color: #828282;
   color: white;
   padding: 5px;
@@ -33,7 +37,7 @@
   letter-spacing: px;
 }
 
-.ad-offer-expand {
+.ad-type-expand {
   display: flex;
   gap: 10px;
 }
