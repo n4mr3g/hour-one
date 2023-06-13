@@ -9,6 +9,29 @@ const offers = (state = [], action) => {
   }
 };
 
-const reducers = combineReducers({ offers });
+const userInfo = (
+  state = {
+    loggedIn: false,
+  },
+  action
+) => {
+  switch (action.type) {
+    case "LOG_IN":
+      state = {
+        ...state,
+        ...action.payload,
+      };
+      return state;
+    case "LOG_OUT":
+      state = {
+        loggedIn: false,
+      };
+      return state;
+    default:
+      return state;
+  }
+};
+
+const reducers = combineReducers({ offers, userInfo });
 
 export default reducers;

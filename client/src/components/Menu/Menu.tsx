@@ -9,8 +9,13 @@ export default function Menu() {
       <Link className="menu-link" to={"/app/dashboard/create"}>
         Create
       </Link>
+      {/* //TODO - change this to saved */}
       <Link className="menu-link" to={"/app/dashboard/mylist"}>
-        My List
+        Saved
+      </Link>
+      {/* //TODO - change this to my offers */}
+      <Link className="menu-link" to={"/app/dashboard/mylist"}>
+        Offers
       </Link>
     </div>
   );

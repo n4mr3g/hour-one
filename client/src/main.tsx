@@ -17,6 +17,7 @@ import Profile from "./components/Profile/Profile.tsx";
 import Form from "./components/Form/Form.tsx";
 import MyList from "./components/MyList/MyList.tsx";
 import SignUp from "./components/SignUp/SignUp.tsx";
+import SignIn from "./components/SignIn/SignIn.tsx";
 
 const router = createBrowserRouter([
   {
@@ -47,8 +48,23 @@ const router = createBrowserRouter([
     ],
   },
   {
+    path: "/app/dashboard/profile",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+    ],
+  },
+
+  {
     path: "/app/signup",
     element: <SignUp />,
+  },
+  {
+    path: "/app/signin",
+    element: <SignIn />,
   },
 ]);
 

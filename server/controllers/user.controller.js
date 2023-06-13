@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 const { User } = require("../models/index");
 const SECRET_KEY = process.env.SECRET_KEY || "thisIsNotSafe";
 const { randomNumber } = require("../utils/utils");
-console.log(randomNumber());
 
 exports.create = async (req, res) => {
   const { email, password } = req.body;

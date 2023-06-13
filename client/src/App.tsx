@@ -4,7 +4,8 @@ import Navigation from "./components/Navigation/Navigation";
 import Filter from "./components/Filter/Filter";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { set } from "./actions";
+import { set } from "./actions.js";
+import apiServiceJWT from "./api/apiServiceJWT.jsx";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -16,6 +17,17 @@ export default function App() {
       .then((data) => {
         dispatch(set(data.data));
       });
+    // TODO Need to make sure that old access token are refresh and deleted;
+    const accessToken = localStorage.getItem("accessToken");
+
+    //function to make jwt profile call
+    const getProfile = async (token) => {
+      console.log(token);
+      const userData = await apiServiceJWT.profile(token);
+      console.log(userData);
+    };
+
+    getProfile(accessToken);
   }, []);
   return (
     <div>

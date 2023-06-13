@@ -7,19 +7,27 @@ import { redirect } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setTrue } from "../../actions";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-
   let navigate = useNavigate();
+  const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.userInfo);
+
+  //FIXME
+  //@ts-ignore
   async function handleSubmit(event) {
     event.preventDefault();
     if (!name || !email || !password) {
       alert("Please enter details correctly");
       return;
     }
+    //FIXME
+    //@ts-ignore
     const res = await apiServiceJWT.signup({
       name,
       email,
@@ -36,8 +44,12 @@ export default function SignUp() {
       setName("");
       setEmail("");
       setPassword("");
-      //there is a problem here
+      // TODO there is a problem here
+      // console.log(setTrue);
+      // dispatch(setTrue(true));
+
       auth.login(() => navigate("/app/dashboard/"));
+      // console.log(userInfo);
     }
   }
   return (

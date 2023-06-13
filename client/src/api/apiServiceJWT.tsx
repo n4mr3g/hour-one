@@ -1,3 +1,5 @@
+import { access } from "fs";
+
 const SERVER_URL = "http://localhost:4000";
 
 const apiServiceJWT = {};
@@ -25,6 +27,20 @@ apiServiceJWT.login = (user) => {
     mode: "cors",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(user),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+};
+
+apiServiceJWT.profile = (accessToken) => {
+  return fetch(`${SERVER_URL}/me`, {
+    method: "GET",
+    credentials: "include",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
   })
     .then((res) => res.json())
     .catch((err) => console.log(err));
