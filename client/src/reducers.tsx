@@ -20,6 +20,7 @@ const userInfo = (
       state = {
         ...state,
         ...action.payload,
+        loggedIn: true,
       };
       return state;
     case "LOG_OUT":

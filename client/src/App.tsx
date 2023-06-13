@@ -4,12 +4,14 @@ import Navigation from "./components/Navigation/Navigation";
 import Filter from "./components/Filter/Filter";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { set } from "./actions.js";
+import { set, login } from "./actions.js";
 import apiServiceJWT from "./api/apiServiceJWT.jsx";
 
 export default function App() {
   const dispatch = useDispatch();
   const offers = useSelector((state) => state.offers);
+  const user = useSelector((state) => state.userInfo);
+  console.log(user);
 
   useEffect(() => {
     fetch("http://localhost:4000/offer")
@@ -22,9 +24,8 @@ export default function App() {
 
     //function to make jwt profile call
     const getProfile = async (token) => {
-      console.log(token);
-      const userData = await apiServiceJWT.profile(token);
-      console.log(userData);
+      const profile = await apiServiceJWT.profile(token);
+      dispatch(login(profile));
     };
 
     getProfile(accessToken);

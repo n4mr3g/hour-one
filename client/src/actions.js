@@ -9,3 +9,7 @@ export function setTrue(data) {
 export function setFalse(data) {
   return { type: "SET_FALSE", payload: data };
 }
+
+export function login(data) {
+  return { type: "LOG_IN", payload: data };
+}

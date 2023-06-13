@@ -11,6 +11,12 @@ export default function Navigation() {
       <SearchBar />
       <div className="nav-options same-width">
         <div className="mylist-wrapper">
+          {/* <Link to={"/app/dashboard/profile"} className="my-list">
+            About
+          </Link>
+          <Link to={"/app/dashboard/profile"} className="my-list">
+            Explore
+          </Link> */}
           <Link to={"/app/dashboard/profile"} className="my-list">
             Dashboard
           </Link>

@@ -2,18 +2,16 @@ import Navigation from "../Navigation/Navigation";
 import "./SignIn.css";
 import auth from "../../utils/auth";
 import apiServiceJWT from "../../api/apiServiceJWT";
-import { redirect } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
+import { login } from "../../actions.js";
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setTrue } from "../../actions";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userInfo);
@@ -22,7 +20,7 @@ export default function SignIn() {
   //@ts-ignore
   async function handleSubmit(event) {
     event.preventDefault();
-    if (email || !password) {
+    if (!email || !password) {
       alert("Please enter details correctly");
       return;
     }
@@ -32,21 +30,21 @@ export default function SignIn() {
       email,
       password,
     });
+    console.log(res);
     if (res.error) {
       alert(res.data);
-      setName("");
+      setEmail("");
       setPassword("");
     } else {
       const { accessToken } = res;
       localStorage.setItem("accessToken", accessToken);
-      setName("");
+      setEmail("");
       setPassword("");
-      // TODO there is a problem here
-      // console.log(setTrue);
-      // dispatch(setTrue(true));
 
-      auth.login(() => navigate("/app/dashboard/profile"));
-      // console.log(userInfo);
+      const profile = await apiServiceJWT.profile(accessToken);
+      dispatch(login(profile));
+
+      navigate("/app");
     }
   }
   return (
