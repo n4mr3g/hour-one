@@ -48,7 +48,7 @@ export default function SignUp() {
       // console.log(setTrue);
       // dispatch(setTrue(true));
 
-      auth.login(() => navigate("/app/dashboard/"));
+      auth.login(() => navigate("/app"));
       // console.log(userInfo);
     }
   }

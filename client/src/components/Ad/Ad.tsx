@@ -24,13 +24,13 @@ export default function Ad({ ad }) {
               setIsExpanded(!isExpanded);
             }}
           >
-            expand_circle_down
+            {isExpanded ? "expand_circle_up" : "expand_circle_down"}
           </span>
         </div>
       </div>
       {isExpanded && <div className="ad-info">{ad.message}</div>}
       <div className="ad-container-bottom">
-        <button className="connect-btn">Connect</button>
+        <button className="connect-btn">Message</button>
         <div className="interests-logo-message">
           <p> {ad.comment} </p>
           <span className="material-symbols-outlined favorite">
