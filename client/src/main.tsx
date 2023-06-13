@@ -16,6 +16,7 @@ import Home from "./routes/Home.tsx";
 import Profile from "./components/Profile/Profile.tsx";
 import Form from "./components/Form/Form.tsx";
 import MyList from "./components/MyList/MyList.tsx";
+import SignUp from "./components/SignUp/SignUp.tsx";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
         element: <MyList />,
       },
     ],
+  },
+  {
+    path: "/app/signup",
+    element: <SignUp />,
   },
 ]);
 
