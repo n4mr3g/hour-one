@@ -30,7 +30,6 @@ export default function SignIn() {
       email,
       password,
     });
-    console.log(res);
     if (res.error) {
       alert(res.data);
       setEmail("");

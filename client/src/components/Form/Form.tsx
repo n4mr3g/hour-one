@@ -2,6 +2,7 @@ import "./Form.css";
 import { useState } from "react";
 
 import { postOffer } from "../../api/apiService";
+import { useNavigate } from "react-router-dom";
 
 export default function Form() {
   const [offer, setOffer] = useState("");
@@ -9,6 +10,7 @@ export default function Form() {
   const [message, setMessage] = useState("");
   const [comment, setComment] = useState("");
   const [author, setAuthor] = useState("John Doe");
+  const navigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -21,6 +23,7 @@ export default function Form() {
     setType("");
     setMessage("");
     setComment("");
+    navigate("/app");
   }
   return (
     <div className="form-container">

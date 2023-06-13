@@ -9,23 +9,13 @@ const offers = (state = [], action) => {
   }
 };
 
-const userInfo = (
-  state = {
-    loggedIn: false,
-  },
-  action
-) => {
+const userInfo = (state = {}, action) => {
   switch (action.type) {
     case "LOG_IN":
       state = {
         ...state,
         ...action.payload,
-        loggedIn: true,
-      };
-      return state;
-    case "LOG_OUT":
-      state = {
-        loggedIn: false,
+        // loggedIn: true,
       };
       return state;
     default:

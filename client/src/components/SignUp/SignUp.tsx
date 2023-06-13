@@ -2,13 +2,12 @@ import Navigation from "../Navigation/Navigation";
 import "./signup.css";
 import auth from "../../utils/auth";
 import apiServiceJWT from "../../api/apiServiceJWT";
-import { redirect } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setTrue } from "../../actions";
+import { login } from "../../actions.js";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -44,12 +43,16 @@ export default function SignUp() {
       setName("");
       setEmail("");
       setPassword("");
-      // TODO there is a problem here
-      // console.log(setTrue);
-      // dispatch(setTrue(true));
 
-      auth.login(() => navigate("/app"));
-      // console.log(userInfo);
+      //function to make jwt profile call
+      const getProfile = async (token) => {
+        const profile = await apiServiceJWT.profile(token);
+        dispatch(login(profile));
+      };
+
+      getProfile(accessToken);
+
+      navigate("/app");
     }
   }
   return (

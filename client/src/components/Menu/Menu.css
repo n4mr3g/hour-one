@@ -6,7 +6,6 @@
   gap: 40px;
   text-transform: uppercase;
   letter-spacing: 2px;
-
   background-color: #ffffff;
 }
 
@@ -16,10 +15,19 @@
 
 .menu-selected {
   color: black;
-  border-bottom: 2px solid black;
 }
 
 .menu-link {
   text-decoration: none;
+  padding: 10px;
   color: black;
+  border-bottom: 2px solid white;
+  transition: all 0.3s;
+}
+
+.menu-link:hover {
+  text-decoration: none;
+  padding: 10px;
+  color: black;
+  border-bottom: 2px solid black;
 }

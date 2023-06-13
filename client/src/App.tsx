@@ -10,8 +10,7 @@ import apiServiceJWT from "./api/apiServiceJWT.jsx";
 export default function App() {
   const dispatch = useDispatch();
   const offers = useSelector((state) => state.offers);
-  const user = useSelector((state) => state.userInfo);
-  console.log(user);
+  // const user = useSelector((state) => state.userInfo);
 
   useEffect(() => {
     fetch("http://localhost:4000/offer")
@@ -19,7 +18,7 @@ export default function App() {
       .then((data) => {
         dispatch(set(data.data));
       });
-    // TODO Need to make sure that old access token are refresh and deleted;
+
     const accessToken = localStorage.getItem("accessToken");
 
     //function to make jwt profile call

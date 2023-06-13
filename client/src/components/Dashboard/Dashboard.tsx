@@ -10,9 +10,9 @@ export default function Dashboard() {
     <div>
       <Navigation />
       {/* TODO put a condition here also */}
-      {user.loggedIn && <Menu />}
+      {user.name && <Menu />}
       <div className="dashboard-container">
-        {user.loggedIn && <Outlet></Outlet>}
+        {user.name && <Outlet></Outlet>}
         {/* TODO may be it might be a good idea to keep track if someone is logged or not here and then not show if user is not logged in. */}
       </div>
     </div>
