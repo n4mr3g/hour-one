@@ -6,11 +6,10 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import apiServiceJWT from "../../api/apiServiceJWT";
 
-export default function Navigation() {
+export default function Navigation({ findOffers }) {
   const [listCount, setListCount] = useState(8);
   const user = useSelector((state) => state.userInfo);
   const dispatch = useDispatch();
-  console.log(user);
 
   function handleSignOut() {
     apiServiceJWT.logout("accessToken");
@@ -20,16 +19,9 @@ export default function Navigation() {
   return (
     <div className="navigation-container">
       <div className="logo same-width ">Hour One</div>
-      <SearchBar />
+      <SearchBar findOffers={findOffers} />
       <div className="nav-options same-width ">
         <div className="mylist-wrapper">
-          {/* <Link to={"/app/dashboard/profile"} className="my-list">
-            About
-          </Link>
-          <Link to={"/app/dashboard/profile"} className="my-list">
-            Explore
-          </Link> */}
-
           {user.name && (
             <>
               <Link to={"/app/dashboard/profile"} className="my-list">
@@ -38,11 +30,7 @@ export default function Navigation() {
               <div className={listCount > 0 ? "list-count" : ""}>
                 {listCount > 0 ? listCount : ""}
               </div>
-              <img
-                className="user-image"
-                src={"https://i.pravatar.cc/150?u=17@pravatar.com"}
-                alt="user"
-              />
+              <img className="user-image" src={user.image} alt="user" />
               <Link
                 onClick={handleSignOut}
                 className="signout-link"

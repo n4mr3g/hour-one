@@ -33,6 +33,7 @@ exports.create = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
+
     const user = await User.findOne({ email });
     const validatePass = await bcrypt.compare(password, user.password);
     if (!validatePass) throw new Error();

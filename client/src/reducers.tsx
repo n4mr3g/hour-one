@@ -15,7 +15,6 @@ const userInfo = (state = {}, action) => {
       state = {
         ...state,
         ...action.payload,
-        // loggedIn: true,
       };
       return state;
     default:
