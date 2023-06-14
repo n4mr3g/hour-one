@@ -3,6 +3,7 @@ const offers = (state = [], action) => {
   switch (action.type) {
     case "SET_OFFERS":
       state = [...action.payload];
+      console.log(state);
       return state;
     default:
       return state;

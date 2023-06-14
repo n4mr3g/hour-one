@@ -9,7 +9,7 @@ const authMiddleware = async (req, res, next) => {
 
   try {
     const { id } = jwt.verify(token, SECRET_KEY);
-    console.log(_id);
+    console.log(id);
     const user = await User.findOne({ _id: id });
     console.log(user);
     if (!user) return res.sendStatus(401);

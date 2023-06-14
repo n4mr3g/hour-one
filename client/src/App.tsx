@@ -12,8 +12,6 @@ export default function App() {
   const dispatch = useDispatch();
   const offersdb = useSelector((state) => state.offers);
   const [offers, setOffers] = useState(offersdb);
-  console.log(offers);
-  console.log(set);
 
   function findOffers(query) {
     const filteredResult = offers.filter((offer) =>
@@ -22,22 +20,20 @@ export default function App() {
     setOffers(filteredResult);
   }
 
-  const user = useSelector((state) => state.userInfo);
+  // const user = useSelector((state) => state.userInfo);
 
   useEffect(() => {
     fetch("http://localhost:4000/offer")
       .then((response) => response.json())
       .then((data) => {
         dispatch(set(data.data));
-        // TODO doing a hacky solution here
-        // setOffers(data.data);
+        setOffers(data.data);
       });
 
     const accessToken = localStorage.getItem("accessToken");
     //function to make jwt profile call
     const getProfile = async (token) => {
       const profile = await apiServiceJWT.profile(token);
-      console.log(profile);
       dispatch(login(profile));
     };
 
