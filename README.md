@@ -11,3 +11,10 @@ Majority of online learning happens with prerecorded materials and while it cert
 ### Solution
 
 An app that will be the platform for what we do in real life, learn and share our skills directly with people one on one.
+
+
+### Legacy Project Refactoring
+
+## Findings:
+  -- NPM depenedencies in package.json were missing
+
