@@ -1,6 +1,7 @@
 import "./SearchBar.css";
 
 import { useState } from "react";
+
 export default function SearchBar({ findOffers }) {
   // get all the offer and filter and just show filtered
   const [query, setQuery] = useState("");

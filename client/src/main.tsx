@@ -6,8 +6,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { Provider } from "react-redux";
-import { legacy_createStore } from "redux";
-import reducers from "./reducers.tsx";
+import { storeApp } from './store.ts'
 
 import App from "./App.tsx";
 import ErrorPage from "./routes/ErrorPage.tsx";
@@ -68,13 +67,13 @@ const router = createBrowserRouter([
   },
 ]);
 
-let store = legacy_createStore(
-  reducers
-  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+// let store = legacy_createStore(
+//   reducers
+//   // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// );
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <Provider store={store}>
+  <Provider store={storeApp}>
     <RouterProvider router={router} />
   </Provider>
 );

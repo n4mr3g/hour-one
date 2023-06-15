@@ -1,5 +1,6 @@
-import { combineReducers } from "redux";
-const offers = (state = [], action) => {
+import { AnyAction } from 'redux';
+
+const offersReducer = (state: string[] = [], action: AnyAction) => {
   switch (action.type) {
     case "SET_OFFERS":
       state = [...action.payload];
@@ -10,7 +11,7 @@ const offers = (state = [], action) => {
   }
 };
 
-const userInfo = (state = {}, action) => {
+const userInfoReducer = (state = {}, action: AnyAction) => {
   switch (action.type) {
     case "LOG_IN":
       state = {
@@ -23,6 +24,6 @@ const userInfo = (state = {}, action) => {
   }
 };
 
-const reducers = combineReducers({ offers, userInfo });
+// const reducers = combineReducers({ offers, userInfo });
 
-export default reducers;
+export { offersReducer, userInfoReducer };
