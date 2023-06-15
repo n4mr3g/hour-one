@@ -3,45 +3,41 @@ import Ad from "./components/Ad/Ad";
 import Navigation from "./components/Navigation/Navigation";
 import Filter from "./components/Filter/Filter";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { set, login } from "./actions.js";
-import apiServiceJWT from "./api/apiServiceJWT.jsx";
+// import { set, login } from "./actions.js";
+// import apiServiceJWT from "./api/apiServiceJWT.jsx";
+import { getOffersFromDB } from "./api/apiService.jsx";
+import { Offer } from "./dataTypes.jsx";
+// import { Offer } from "./dataTypes.tsx";
 
 export default function App() {
-  const dispatch = useDispatch();
-  const offersdb = useSelector((state) => state.offers);
-  const [offers, setOffers] = useState(offersdb);
 
-  function findOffers(query) {
-    const filteredResult = offers.filter((offer) =>
-      offer.offer.toLowerCase().includes(query)
-    );
-    setOffers(filteredResult);
-  }
+  const [offers, setOffers] = useState<Offer[]>([]);
+
+  // const dispatch = useDispatch();
+  // const offersdb = useSelector<RootState, Offer[]>((state) => state.offers);
+  // const offersdb = getOffersFromDB();
+  // const [offers, setOffers] = useState(offersdb);
+
+  // function findOffers(query: string): void {
+  //   const filteredResult = offers.filter((offer: Offer) =>
+  //     offer.offer.toLowerCase().includes(query)
+  //   );
+  //   setOffers(filteredResult);
+  // }
 
   // const user = useSelector((state) => state.userInfo);
 
-  useEffect(() => {
-    fetch("http://localhost:4000/offer")
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch(set(data.data));
-        setOffers(data.data);
-      });
+  useEffect(() => { getOffersFromDB() }, []);
 
-    const accessToken = localStorage.getItem("accessToken");
-    //function to make jwt profile call
-    const getProfile = async (token) => {
-      const profile = await apiServiceJWT.profile(token);
-      dispatch(login(profile));
-    };
+  // const off = getOffersFromDB().then(offers => { return offers });
+  // setOffers(off);
 
-    getProfile(accessToken);
-  }, []);
+
   return (
     <div>
-      <Navigation findOffers={findOffers} />
+      <Navigation findOffers={offers} />
       <div className="app-view">
         <Filter />
         <div className="listing">

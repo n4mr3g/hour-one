@@ -2,18 +2,18 @@ import "./SearchBar.css";
 
 import { useState } from "react";
 
-export default function SearchBar({ findOffers }) {
+export default function SearchBar({ findOffers }: { findOffers: Function }) {
   // get all the offer and filter and just show filtered
   const [query, setQuery] = useState("");
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     findOffers(query);
     setQuery("");
   }
 
   return (
-    <form className="search-form" onSubmit={handleSubmit}>
+    <form className="search-form" onSubmit={(e) => handleSubmit(e)}>
       <input
         value={query}
         className="search-box"
