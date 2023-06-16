@@ -1,6 +1,6 @@
 export interface Offer {
   author: String,
-  authorId: String,
+  // authorId: String,
   offer: String,
   image: String,
   message: String,

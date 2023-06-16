@@ -1,5 +1,6 @@
 import "./Form.css";
 import { useState } from "react";
+import { Offer } from "../../dataTypes";
 
 import { postOffer } from "../../api/apiService";
 import { useNavigate } from "react-router-dom";
@@ -12,13 +13,14 @@ export default function Form() {
   const [author, setAuthor] = useState("John Doe");
   const navigate = useNavigate();
 
-  function handleSubmit(event) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!offer || !type || !message || !comment) {
       alert("Please enter details correctly");
       return;
     }
-    postOffer({ offer, type, message, comment, author });
+    let newOffer: Offer = { offer: offer, type: type, message: message, comment: comment, author: author, image: '' };
+    postOffer(newOffer);
     setOffer("");
     setType("");
     setMessage("");
@@ -68,8 +70,8 @@ export default function Form() {
             className="input-box"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            cols="40"
-            rows="5"
+            cols={40}
+            rows={5}
           ></textarea>
         </div>
         <div className="input-group">
@@ -81,8 +83,8 @@ export default function Form() {
             className="input-box"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            cols="50"
-            rows="2"
+            cols={50}
+            rows={2}
           ></textarea>
         </div>
         <button className="create-btn" type="submit">
