@@ -1,19 +1,31 @@
 import "./App.css";
-import Ad from "./components/Ad/Ad";
 import Navigation from "./components/Navigation/Navigation";
 import Filter from "./components/Filter/Filter";
 import { useState } from "react";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 // import { set, login } from "./actions.js";
 // import apiServiceJWT from "./api/apiServiceJWT.jsx";
-import { getOffersFromDB } from "./api/apiService.jsx";
-import { Offer } from "./dataTypes.jsx";
-// import { Offer } from "./dataTypes.tsx";
+import { fetchOffersFromServer } from "./api/apiService.jsx";
+// import { Offer } from "./dataTypes.jsx";
+import { Offer } from "./dataTypes.tsx";
+import OffersList from "./components/OffersList/OffersList.tsx";
+import { set } from "./actions.ts";
 
 export default function App() {
-
   const [offers, setOffers] = useState<Offer[]>([]);
+
+  let offersFromServer: Offer[] = [];
+
+  function loadOffers() {
+    fetchOffersFromServer().then((offersFromServer) =>
+      setOffers(offersFromServer),
+    );
+  }
+  // let offersPromise: Promise<void | Offer[]> = getOffersFromDB()
+  // .then(offers => {
+  //   offers = offers;
+  // });
 
   // const dispatch = useDispatch();
   // const offersdb = useSelector<RootState, Offer[]>((state) => state.offers);
@@ -22,29 +34,30 @@ export default function App() {
 
   function findOffers(query: string): void {
     const filteredResult = offers.filter((offer: Offer) =>
-      offer.offer.toLowerCase().includes(query)
+      offer.offer.toLowerCase().includes(query),
     );
     setOffers(filteredResult);
   }
 
   // const user = useSelector((state) => state.userInfo);
 
-  useEffect(() => { getOffersFromDB() }, []);
+  useEffect(() => {
+    loadOffers();
+  }, []);
+
+  // useEffect(() => {
+  //   setOffers();
+  // }, [offers]);
 
   // const off = getOffersFromDB().then(offers => { return offers });
   // setOffers(off);
-
 
   return (
     <div>
       <Navigation findOffers={findOffers} />
       <div className="app-view">
         <Filter />
-        <div className="listing">
-          {offers.map((ad) => (
-            <Ad ad={ad} key={crypto.randomUUID()}></Ad>
-          ))}
-        </div>
+        <OffersList offers={offers} />
       </div>
     </div>
   );

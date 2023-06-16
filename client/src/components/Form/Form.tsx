@@ -1,4 +1,4 @@
-import "./Form.css";
+import "./form.css";
 import { useState } from "react";
 import { Offer } from "../../dataTypes";
 
@@ -19,7 +19,14 @@ export default function Form() {
       alert("Please enter details correctly");
       return;
     }
-    let newOffer: Offer = { offer: offer, type: type, message: message, comment: comment, author: author, image: '' };
+    let newOffer: Offer = {
+      offer: offer,
+      type: type,
+      message: message,
+      comment: comment,
+      author: author,
+      image: "",
+    };
     postOffer(newOffer);
     setOffer("");
     setType("");

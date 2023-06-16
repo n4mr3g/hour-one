@@ -34,10 +34,11 @@ export async function getOffer(req: Request, res: Response) {
     const allOffers = await Offer.find();
     console.log(allOffers, 'allOffers')
     res.status(200);
-    res.send({
-      data: allOffers,
-      error: null,
-    });
+    // res.send({
+    //   data: allOffers,
+    //   error: null,
+    // });
+    res.send(allOffers);
   } catch (error) {
     res.status(500);
     console.error(error);
