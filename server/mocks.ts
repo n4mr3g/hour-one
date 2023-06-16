@@ -21,7 +21,7 @@ const mocks = [
     message:
       "I have been learning french for sometime now and would love to speak with a native speaker in exchange I am also happy to speak with you in english, its my mother tongue",
     comment: `Sorry cant be flexible with other offers`,
-    offer: "Learn",
+    type: "Learn",
   },
   {
     author: "German Picoci",
@@ -29,7 +29,7 @@ const mocks = [
     message:
       "I want to improve my backend skills and was keen to find someone who has a solid basic understanding of express. In return I am happy to teach you anything react related",
     comment: "Happy to also exchange for devops lesson",
-    offer: "Learn",
+    type: "Learn",
   },
 ];
 

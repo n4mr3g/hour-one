@@ -2,13 +2,16 @@ import "./dashboard.css";
 import Navigation from "../Navigation/Navigation";
 import Menu from "../Menu/Menu";
 import { Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { storeApp } from "../../store";
+import findOffers from '../../App.jsx'
 
 export default function Dashboard() {
-  const user = useSelector((state) => state.userInfo);
+  // const user = useSelector((state) => state.userInfo);
+  const user = storeApp.getState().userInfo;
+
   return (
     <div>
-      <Navigation />
+      <Navigation findOffers={findOffers} />
       {/* TODO put a condition here also */}
       {user.name && <Menu />}
       <div className="dashboard-container">

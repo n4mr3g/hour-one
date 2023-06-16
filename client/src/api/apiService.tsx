@@ -2,7 +2,7 @@ import { Offer } from "../dataTypes";
 
 // const [offers, setOffers] = useState([]);
 
-export async function postOffer(offer: Offer[]) {
+export async function postOffer(offer: Offer) {
   const res = await fetch("http://localhost:4000/offer", {
     method: "POST",
     headers: {
@@ -15,7 +15,7 @@ export async function postOffer(offer: Offer[]) {
 }
 
 
-export async function getOffersFromDB(): Promise<Offer[]> {
+export async function getOffersFromDB(): Offer[] {
 
   // const dispatch = useDispatch();
 
@@ -39,5 +39,7 @@ export async function getOffersFromDB(): Promise<Offer[]> {
 
   // getProfile(accessToken);
 
-  return response.json();
+  const res = await response.json()
+
+  return res.data;
 };

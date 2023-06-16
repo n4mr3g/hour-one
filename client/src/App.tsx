@@ -20,12 +20,12 @@ export default function App() {
   // const offersdb = getOffersFromDB();
   // const [offers, setOffers] = useState(offersdb);
 
-  // function findOffers(query: string): void {
-  //   const filteredResult = offers.filter((offer: Offer) =>
-  //     offer.offer.toLowerCase().includes(query)
-  //   );
-  //   setOffers(filteredResult);
-  // }
+  function findOffers(query: string): void {
+    const filteredResult = offers.filter((offer: Offer) =>
+      offer.offer.toLowerCase().includes(query)
+    );
+    setOffers(filteredResult);
+  }
 
   // const user = useSelector((state) => state.userInfo);
 
@@ -37,7 +37,7 @@ export default function App() {
 
   return (
     <div>
-      <Navigation findOffers={offers} />
+      <Navigation findOffers={findOffers} />
       <div className="app-view">
         <Filter />
         <div className="listing">

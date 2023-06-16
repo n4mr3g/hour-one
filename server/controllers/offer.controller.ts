@@ -32,6 +32,7 @@ export async function getOffer(req: Request, res: Response) {
   try {
     console.log("getting all offers from db");
     const allOffers = await Offer.find();
+    console.log(allOffers, 'allOffers')
     res.status(200);
     res.send({
       data: allOffers,

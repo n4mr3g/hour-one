@@ -1,20 +1,23 @@
 import Navigation from "../Navigation/Navigation";
 import "./SignIn.css";
-import auth from "../../utils/auth";
-import apiServiceJWT from "../../api/apiServiceJWT";
+import { login, profile } from "../../api/apiServiceJWT";
 
 import { useNavigate } from "react-router-dom";
-import { login } from "../../actions.js";
+import { loginAction } from "../../actions.js";
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { storeApp } from "../../store.js";
+
+import findOffers from '../../App.jsx'
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  const userInfo = useSelector((state) => state.userInfo);
+  // const userInfo = useSelector((state) => state.userInfo);
+  const userInfo = storeApp.getState().userInfo;
 
   //FIXME
   //@ts-ignore
@@ -26,7 +29,7 @@ export default function SignIn() {
     }
     //FIXME
     //@ts-ignore
-    const res = await apiServiceJWT.login({
+    const res = await login({
       email,
       password,
     });
@@ -40,15 +43,15 @@ export default function SignIn() {
       setEmail("");
       setPassword("");
 
-      const profile = await apiServiceJWT.profile(accessToken);
-      dispatch(login(profile));
+      const prof = await profile(accessToken);
+      dispatch(loginAction(prof));
 
       navigate("/app");
     }
   }
   return (
     <>
-      <Navigation />
+      <Navigation findOffers={findOffers} />
       <div className="form-container">
         <form className="form-itself" onSubmit={handleSubmit}>
           <div className="form--title"> Log In </div>

@@ -12,6 +12,7 @@ export function setFalse(data: boolean) {
   return { type: "SET_FALSE", payload: data };
 }
 
-export function login(data: boolean) {
+
+export function loginAction(data: boolean) {
   return { type: "LOG_IN", payload: data };
 }

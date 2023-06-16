@@ -1,4 +1,5 @@
 import { AnyAction } from 'redux';
+import { User } from './dataTypes';
 
 const offersReducer = (state: string[] = [], action: AnyAction) => {
   switch (action.type) {
@@ -11,7 +12,13 @@ const offersReducer = (state: string[] = [], action: AnyAction) => {
   }
 };
 
-const userInfoReducer = (state = {}, action: AnyAction) => {
+
+const userInfoReducer = (state: User = {
+  name: '',
+  email: '',
+  password: '',
+  image: ''
+}, action: AnyAction) => {
   switch (action.type) {
     case "LOG_IN":
       state = {
