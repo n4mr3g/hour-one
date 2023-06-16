@@ -1,7 +1,4 @@
-import { useDispatch } from "react-redux";
-import { set } from "../actions";
 import { Offer } from "../dataTypes";
-import apiServiceJWT from "./apiServiceJWT";
 
 // const [offers, setOffers] = useState([]);
 

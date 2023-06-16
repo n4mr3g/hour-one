@@ -1,12 +1,9 @@
-import { access } from "fs";
+import { User } from "../dataTypes";
 
 const SERVER_URL = "http://localhost:4000";
 
-const apiServiceJWT = {};
 
-//FIXME
-//@ts-ignore
-apiServiceJWT.signup = (user) => {
+export const signup = (user: User) => {
   return fetch(`${SERVER_URL}/signup`, {
     method: "POST",
     credentials: "include",
@@ -18,9 +15,8 @@ apiServiceJWT.signup = (user) => {
     .catch((err) => console.log(err));
 };
 
-//FIXME
-//@ts-ignore
-apiServiceJWT.login = (user) => {
+
+export const login = (user: User) => {
   return fetch(`${SERVER_URL}/login`, {
     method: "POST",
     credentials: "include",
@@ -32,7 +28,7 @@ apiServiceJWT.login = (user) => {
     .catch((err) => console.log(err));
 };
 
-apiServiceJWT.profile = (accessToken) => {
+export const profile = (accessToken: string) => {
   return fetch(`${SERVER_URL}/me`, {
     method: "GET",
     credentials: "include",
@@ -46,8 +42,6 @@ apiServiceJWT.profile = (accessToken) => {
     .catch((err) => console.log(err));
 };
 
-apiServiceJWT.logout = (tokenName) => {
+export const logout = (tokenName: string) => {
   localStorage.removeItem(tokenName);
 };
-
-export default apiServiceJWT;

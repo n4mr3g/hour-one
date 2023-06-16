@@ -7,3 +7,9 @@ export interface Offer {
   comment: String,
   type: String,
 }
+
+export interface User {
+  name: String,
+  email: String,
+  password: String,
+}
