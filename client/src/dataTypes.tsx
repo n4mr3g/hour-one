@@ -2,7 +2,7 @@ export interface Offer {
   author: String,
   // authorId: String,
   offer: String,
-  image: String,
+  image: string,
   message: String,
   comment: String,
   type: String,
@@ -14,3 +14,4 @@ export interface User {
   password: String,
   image: string
 }
+
