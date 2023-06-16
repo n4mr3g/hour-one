@@ -1,19 +1,25 @@
 import "./Navigation.css";
 import SearchBar from "../SearchBar/SearchBar";
-import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import apiServiceJWT from "../../api/apiServiceJWT";
+import { useDispatch } from "react-redux";
+import { logout } from "../../api/apiServiceJWT";
+import { storeApp } from "../../store";
+import { loginAction } from "../../actions";
 
-export default function Navigation({ findOffers }) {
-  const [listCount, setListCount] = useState(8);
-  const user = useSelector((state) => state.userInfo);
+export default function Navigation({ findOffers }: { findOffers: Function }) {
+
+  const [listCount, setListCount] = useState<number>(8);
+
+  // const user = useSelector((state) => state.userInfo);
+  const user = storeApp.getState().userInfo;
+
   const dispatch = useDispatch();
 
   function handleSignOut() {
-    apiServiceJWT.logout("accessToken");
-    dispatch(profile({}));
+    logout("accessToken");
+    // dispatch(profile(''));
+    dispatch(loginAction(false));
   }
 
   return (
