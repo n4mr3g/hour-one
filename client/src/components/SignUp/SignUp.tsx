@@ -1,13 +1,16 @@
 import Navigation from "../Navigation/Navigation";
 import "./signup.css";
 import auth from "../../utils/auth";
-import apiServiceJWT from "../../api/apiServiceJWT";
+import { signup, profile } from "../../api/apiServiceJWT";
 
 import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../actions.js";
+import { loginAction } from "../../actions.js";
+import { storeApp } from "../../store.js";
+
+import findOffers from '../../App.jsx'
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -15,7 +18,8 @@ export default function SignUp() {
   const [name, setName] = useState("");
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  const userInfo = useSelector((state) => state.userInfo);
+  // const userInfo = useSelector((state) => state.userInfo);
+  const userInfo = storeApp.getState().userInfo;
 
   //FIXME
   //@ts-ignore
@@ -27,7 +31,7 @@ export default function SignUp() {
     }
     //FIXME
     //@ts-ignore
-    const res = await apiServiceJWT.signup({
+    const res = await signup({
       name,
       email,
       password,
@@ -45,9 +49,9 @@ export default function SignUp() {
       setPassword("");
 
       //function to make jwt profile call
-      const getProfile = async (token) => {
-        const profile = await apiServiceJWT.profile(token);
-        dispatch(login(profile));
+      const getProfile = async (token: string) => {
+        const prof = await profile(token);
+        dispatch(loginAction(prof));
       };
 
       getProfile(accessToken);
@@ -57,7 +61,7 @@ export default function SignUp() {
   }
   return (
     <>
-      <Navigation />
+      <Navigation findOffers={findOffers} />
       <div className="form-container">
         <form className="form-itself" onSubmit={handleSubmit}>
           <div className="form--title"> Join Hour One </div>

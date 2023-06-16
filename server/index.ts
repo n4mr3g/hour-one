@@ -15,8 +15,8 @@ declare global {
 const app = express();
 const port = 4000;
 
-const corsConfig: cors.CorsOptions = {
-  origin: "http://localhost:4000",
+const corsConfig = {
+  origin: "http://localhost:5173",
   credentials: true,
 };
 
