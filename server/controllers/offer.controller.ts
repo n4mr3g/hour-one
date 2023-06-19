@@ -23,9 +23,9 @@ export async function postOffer(req: Request, res: Response) {
         image: `https://i.pravatar.cc/200?u=${randomNumber()}@pravatar.com`,
         authorId: Crypto.randomUUID(),
       });
-      const { id } = await newOffer.save();
+      const savedOffer = await newOffer.save();
       res.status(200);
-      res.send(id);
+      res.send(savedOffer);
       res.setHeader('Content-Type', 'application/json');
     } else {
       res.status(403);

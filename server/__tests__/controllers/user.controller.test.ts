@@ -11,6 +11,12 @@ beforeAll(async () => {
   const res = await server
 });
 
+  afterEach(async () => {
+    // await app.close()
+    // Close the server instance after each test
+    server.close()
+  })
+
 describe("Login routes: POST /login", () => {
   it("should return 200 & valid response", async () => {
     const { body } = await server
@@ -20,4 +26,4 @@ describe("Login routes: POST /login", () => {
     .expect()
     .expect(200);
   });
-}
+});

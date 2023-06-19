@@ -1,6 +1,7 @@
 import request from "supertest";
+import mongoose from "mongoose";
 
-import app from "../../index";
+import { app, server } from "../../index";
 
 import * as mocks from "../mocks";
 import supertest from "supertest";
@@ -21,27 +22,34 @@ import supertest from "supertest";
 // .env file, to run the dev server in a different port
 // For later, to run the server before testing
 
-let server: any;
 let token;
+let connection: supertest.SuperTest<supertest.Test>;
 beforeAll(async () => {
-  server = request(app);
-  const res = await server.post("/login").send(mocks.validUserCredentials);
+  connection = await request(app);
+  const res = await connection.post("/login").send(mocks.validUserCredentials);
   token = res.body.token;
+});
+
+afterAll(async () => {
+  // await app.close()
+  // Close the server instance after each test
+  await mongoose.connection.close();
+  await server.close();
 });
 
 describe("Offer routes: GET /offer", () => {
   it("should return 200 & valid content-type when calling /offer", async () => {
-    server.get("/offer").expect("Content-Type", /json/).expect(200);
+    await app.get("/offer").expect("Content-Type", /json/).expect(200);
   });
 });
 
 describe("Offer routes: POST /offer", () => {
   it("should return 200 & return the sent object as a response", async () => {
-    const { body } = await server
+    const { body } = await connection
       .post("/offer")
       .send(mocks.mockOffer)
       .expect("Content-Type", /json/)
-      .expect(200);
+      .expect(200)
     expect(body[0].author).toEqual(mocks.mockOffer.author);
     expect(body[0].message).toEqual(mocks.mockOffer.message);
     expect(body[0].comment).toEqual(mocks.mockOffer.comment);
@@ -49,5 +57,5 @@ describe("Offer routes: POST /offer", () => {
     expect(body[0].title).toEqual(mocks.mockOffer.title);
   });
 
-  it("should ");
+  // it("should ");
 });
