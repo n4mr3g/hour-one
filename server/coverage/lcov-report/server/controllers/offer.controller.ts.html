@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">32.25% </span>
+                <span class="strong">16.12% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/31</span>
+                <span class='fraction'>5/31</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">32.25% </span>
+                <span class="strong">16.12% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/31</span>
+                <span class='fraction'>5/31</span>
             </div>
         
             
@@ -130,15 +130,15 @@
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -174,18 +174,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -222,9 +222,9 @@ export async function <span class="fstat-no" title="function not covered" >postO
         image: `https://i.pravatar.cc/200?u=${randomNumber()}@pravatar.com`,
         authorId: Crypto.randomUUID(),
       });
-      const { id } = <span class="cstat-no" title="statement not covered" >await newOffer.save();</span>
+      const savedOffer = <span class="cstat-no" title="statement not covered" >await newOffer.save();</span>
 <span class="cstat-no" title="statement not covered" >      res.status(200);</span>
-<span class="cstat-no" title="statement not covered" >      res.send(id);</span>
+<span class="cstat-no" title="statement not covered" >      res.send(savedOffer);</span>
 <span class="cstat-no" title="statement not covered" >      res.setHeader('Content-Type', 'application/json');</span>
     } else {
 <span class="cstat-no" title="statement not covered" >      res.status(403);</span>
@@ -241,18 +241,18 @@ export async function <span class="fstat-no" title="function not covered" >postO
   }
 }
 &nbsp;
-export async function getOffers(req: Request, res: Response) {
-  try {
-    console.log("getting all offers from db");
-    const allOffers = await Offer.find({});
+export async function <span class="fstat-no" title="function not covered" >getOffers(</span>req: Request, res: Response) {
+<span class="cstat-no" title="statement not covered" >  try {</span>
+<span class="cstat-no" title="statement not covered" >    console.log("getting all offers from db");</span>
+    const allOffers = <span class="cstat-no" title="statement not covered" >await Offer.find({});</span>
     // console.log(allOffers, 'allOffers')
     // res.setHeader('Content-Type', 'application/json');
-    res.status(200);
+<span class="cstat-no" title="statement not covered" >    res.status(200);</span>
     // res.send({
     //   data: allOffers,
     //   error: null,
     // });
-    res.send(allOffers);
+<span class="cstat-no" title="statement not covered" >    res.send(allOffers);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(500);</span>
 <span class="cstat-no" title="statement not covered" >    console.error(error);</span>
@@ -271,7 +271,7 @@ export async function getOffers(req: Request, res: Response) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-06-19T14:47:39.911Z
+                at 2023-06-19T18:00:57.777Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

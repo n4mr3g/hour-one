@@ -31,7 +31,7 @@ const corsConfig: cors.CorsOptions = {
   //     callback(new Error('Not allowed by CORS'));
   //   }
   // },
-  origin: ['http://localhost:5173'],
+  origin: ["http://localhost:5173"],
   // origin: ['http://localhost:5173', 'http://localhost:5173/signup', 'http://localhost:5173/app/signin', 'http://localhost:5173/offer', 'http://localhost:5173/app'],
   methods: ["GET", "POST", "DELETE", "UPDATE"],
   // origin: ['http://localhost:5173'],
@@ -48,9 +48,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(router);
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
 
-
-export default app;
+export {app, server};

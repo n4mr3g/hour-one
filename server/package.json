@@ -5,7 +5,9 @@
   "main": "index.ts",
   "scripts": {
     "server": "nodemon index.ts",
-    "test": "jest --coverage --watchAll",
+    "test": "jest --watchAll ",
+    "test:offers": "jest __tests__/controllers/offer.controller.test.ts --detectOpenHandles --no-cache",
+    "test:user": "jest ./__tests__/controllers/user.controller.test.ts --detectOpenHandles --no-cache",
     "test:unit": "ENV_FILE=./config/.env.test jest"
   },
   "author": "",
