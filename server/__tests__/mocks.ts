@@ -9,6 +9,7 @@ export const mockOffer = {
 
 export const mockOffersDb = [
   {
+    //TODO: Check with id instead (in tests)
     _id: "648b5011bf4ab0dbb37326b1",
     author: "Gary Newman",
     message:

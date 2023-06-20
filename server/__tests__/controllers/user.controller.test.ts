@@ -1,11 +1,8 @@
 import request from "supertest";
 import mongoose from "mongoose";
 import { app, server } from "../../index";
-
 import * as mocks from "../mocks";
 import supertest from "supertest";
-
-// let token;
 
 let connection: supertest.SuperTest<supertest.Test>;
 beforeAll(async () => {
@@ -13,8 +10,6 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  // await app.close()
-  // Close the server instance after each test
   await mongoose.connection.close();
   await server.close();
 });

@@ -58,22 +58,6 @@ function composeUserDataForClient(user: User, accessToken: string) {
 }
 
 
-
-// We don't need this route, because we are using JWT
-// export async function logout(req: Request, res: Response) {
-//   try {
-//     const user = req.user;
-//     if (!user) {
-//       throw new Error("User not found");
-//     }
-//     const { id, name, email, image, offers, favourite } = user;
-//     res.status(200).send({ data: "User logged out" });
-
-//   } catch (error) {
-//     res.status(500).send({ error, data: "Could not logout" });
-//   }
-// }
-
 export async function profile(req: Request, res: Response) {
   try {
     const user = req.user;
@@ -86,28 +70,3 @@ export async function profile(req: Request, res: Response) {
     res.status(404).send({ error, data: "Resource not found" });
   }
 }
-
-//TODO: this is old code, check if it is needed
-// export async function signup(req: Request, res: ) {
-//   try {
-//     const newUser = await User.create(req.body);
-//     res.status(201);
-//     res.send({
-//       error: null,
-//       data: {
-//         user: newUser,
-//       },
-//     });
-//   } catch (error) {
-//     res.status(500);
-//     res.send({ data: null, error: error });
-//   }
-// };
-
-// export async function getAllUsers = (req: Request, res: ) {
-//   res.status(500);
-//   res.send({
-//     data: null,
-//     error: "This route is not yet created",
-//   });
-// };
