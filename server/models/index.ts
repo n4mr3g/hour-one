@@ -36,7 +36,7 @@ const userSchema = new Schema({
   favourite: [offerSchema],
 });
 
-const User = mongoose.model("User", userSchema);
-const Offer = mongoose.model("Offer", offerSchema);
+const UserModel = mongoose.model("User", userSchema);
+const OfferModel = mongoose.model("Offer", offerSchema);
 
-export { User, Offer };
+export { UserModel, OfferModel };
