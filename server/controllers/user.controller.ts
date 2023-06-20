@@ -1,17 +1,16 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { User } from "../models/index";
+import { UserModel } from "../models/index";
 import randomNumber from "../utils/utils";
+import { User } from "../types/User";
 
 const SECRET_KEY: string = process.env.SECRET_KEY || "thisIsNotSafe";
 
 export async function create(req: Request, res: Response) {
   const { email, password } = req.body;
-  // console.log("herghfjfghe");
-  // console.log(req.body);
   try {
-    const user = await User.findOne({ email: email });
+    const user = await UserModel.findOne({ email: email });
     if (user) {
       return res.status(409).send({ error: "409", data: "User already exits" });
     }
@@ -20,16 +19,14 @@ export async function create(req: Request, res: Response) {
 
     const hash = await bcrypt.hash(password, 10);
 
-    const newUser = new User({
+    const newUser = new UserModel({
       name: req.body.name,
       email: req.body.email,
       password: hash,
-      //TODO: add image to user
       image: `https://i.pravatar.cc/200?u=${randomNumber()}@pravatar.com`,
     });
     const { id } = await newUser.save();
     const accessToken = jwt.sign({ id }, SECRET_KEY);
-    console.log("accessToken", accessToken);
     res.status(201)
     res.send(JSON.stringify(accessToken));
   } catch (error) {
@@ -40,18 +37,27 @@ export async function create(req: Request, res: Response) {
 export async function login(req: Request, res: Response) {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email });
+    const user = await UserModel.findOne({ email });
     const validatePass = await bcrypt.compare(password, user?.password);
     if (!validatePass) throw new Error();
     const accessToken = jwt.sign({ id: user.id }, SECRET_KEY);
-    console.log(accessToken, 'login')
     res.status(200);
-    res.send(JSON.stringify(accessToken));
+    const userDataForClient =  composeUserDataForClient(user, accessToken);
+    res.send(JSON.stringify(userDataForClient));
   } catch (error) {
     res.status(401);
     res.send({ error, data: "User not found" });
   }
 }
+
+function composeUserDataForClient(user: User, accessToken: string) {
+  const { name, email, profilePicture, offers, favorites } = user;
+  const newUser = { name, email, profilePicture, offers, favorites };
+  const responseObject = {user: newUser, accessToken: accessToken}
+  return responseObject;
+}
+
+
 
 // We don't need this route, because we are using JWT
 // export async function logout(req: Request, res: Response) {

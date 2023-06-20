@@ -19,12 +19,33 @@ export const mockOffersDb = [
   },
 ];
 
-export const validUserCredentials = {
+export const validLoginCredentials = {
   email: "test@test.com",
   password: "123456789",
 };
 
-export const invalidUserCredentials = {
+export const invalidLoginCredentials = {
   email: "wrong@wrong.fake",
   password: "14574563454",
+};
+
+export const userCreationData = {
+  valid: {
+    name: "test2",
+    email: "test2@test2.com",
+    password: "supersecurepassword123",
+    profilePicture: "",
+  },
+  shortPassword: {
+    name: "shortpassword",
+    email: "test3@test3.com",
+    password: "1234567",
+    profilePicture: "",
+  },
+  invalidEmail: {
+    name: "bad email",
+    email: "not an email",
+    password: "123456789",
+    profilePicture: "",
+  }
 };
