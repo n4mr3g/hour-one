@@ -18,7 +18,6 @@ export async function create(req: Request, res: Response) {
     if (password === "") throw new Error();
 
     const hash = await bcrypt.hash(password, 10);
-
     const newUser = new UserModel({
       name: req.body.name,
       email: req.body.email,
@@ -64,7 +63,6 @@ export async function profile(req: Request, res: Response) {
     if (!user) {
       throw new Error("User not found");
     }
-    const { id, name, email, image, offers, favourite } = user;
     res.status(200).send(user);
   } catch (error) {
     res.status(404).send({ error, data: "Resource not found" });
