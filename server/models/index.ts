@@ -1,8 +1,12 @@
+import path from "path";
+
 require("dotenv").config();
+require("dotenv").config({
+  path: path.resolve(__dirname,`../config/.${process.env.NODE_ENV}.env`)
+});
 
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-
 const url = process.env.DATABASE_URL;
 
 async function main() {

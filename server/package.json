@@ -5,10 +5,10 @@
   "main": "index.ts",
   "scripts": {
     "server": "nodemon index.ts",
-    "test": "jest --watchAll ",
-    "test:offers": "jest __tests__/controllers/offer.controller.test.ts --detectOpenHandles --no-cache",
-    "test:user": "jest ./__tests__/controllers/user.controller.test.ts --detectOpenHandles --no-cache",
-    "test:unit": "ENV_FILE=./config/.env.test jest"
+    "test": "NODE_ENV=test jest --watchAll ",
+    "test:offers": "NODE_ENV=test jest __tests__/controllers/offer.controller.test.ts --detectOpenHandles --no-cache",
+    "test:user": "NODE_ENV=test jest ./__tests__/controllers/user.controller.test.ts --detectOpenHandles --no-cache",
+    "test:unit": "NODE_ENV=test jest"
   },
   "author": "",
   "license": "ISC",

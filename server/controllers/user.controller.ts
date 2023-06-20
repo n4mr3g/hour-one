@@ -43,7 +43,7 @@ export async function login(req: Request, res: Response) {
     const accessToken = jwt.sign({ id: user.id }, SECRET_KEY);
     res.status(200);
     const userDataForClient =  composeUserDataForClient(user, accessToken);
-    res.send(JSON.stringify(userDataForClient));
+    res.send(userDataForClient);
   } catch (error) {
     res.status(401);
     res.send({ error, data: "User not found" });

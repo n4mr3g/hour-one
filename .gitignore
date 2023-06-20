@@ -3,9 +3,7 @@ node_modules
 
 
 # .env
-.env
-server/.env
-client/.env
+**/*.env
 
 
 # Editor directories and files
