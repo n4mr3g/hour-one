@@ -40,7 +40,7 @@ const profile = (accessToken: string) => {
     mode: "cors",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${accessToken}`,
+      Authorization: `Bearer ${accessToken}`,
     },
   })
     .then((res) => res.json())

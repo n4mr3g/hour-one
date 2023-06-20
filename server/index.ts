@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import router from "./router";
+// dotenv.config({ path: path.resolve(__dirname,`./config/${process.env.NODE_ENV}.env`) });
 
 //TODO: decide if this is needed
 declare global {
@@ -35,7 +36,7 @@ const corsConfig: cors.CorsOptions = {
   // origin: ['http://localhost:5173', 'http://localhost:5173/signup', 'http://localhost:5173/app/signin', 'http://localhost:5173/offer', 'http://localhost:5173/app'],
   methods: ["GET", "POST", "DELETE", "UPDATE"],
   // origin: ['http://localhost:5173'],
-  allowedHeaders: ["Content-Type", "authorization"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 };
 
@@ -52,4 +53,4 @@ const server = app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
 
-export {app, server};
+export { app, server };
