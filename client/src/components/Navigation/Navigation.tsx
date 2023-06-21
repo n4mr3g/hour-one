@@ -15,11 +15,8 @@ export default function Navigation({ findOffers }: { findOffers: Function }) {
 
   let navigate = useNavigate();
 
-  const user: UserFromBackend = useAppSelector(state => state.userInfo[0]);
-  console.log('userLogged', user)
-  // const user2: UserFromBackend = storeApp.getState().userInfo[0];
-  // console.log('userLogged2', user2)
-
+  const user: UserFromBackend = useAppSelector((state) => state.userInfo[0]);
+  console.log("userLogged", user);
 
   const dispatch = useAppDispatch();
   function handleSignOut() {
@@ -33,9 +30,9 @@ export default function Navigation({ findOffers }: { findOffers: Function }) {
   return (
     <nav>
       <div className="navigation-container">
-        <a href="/app" className="logo same-width ">
+        <Link to={"/app"} className="logo same-width">
           Hour One
-        </a>
+        </Link>
         {/* <div className="logo same-width ">Hour One</div> */}
         <SearchBar findOffers={findOffers} />
         <div className="nav-options same-width ">
