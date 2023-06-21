@@ -1,8 +1,9 @@
 import path from "path";
 
-require("dotenv").config();
+const NODE_ENV = process.env.NODE_ENV ? "." + process.env.NODE_ENV : "";
+
 require("dotenv").config({
-  path: path.resolve(__dirname,`../config/.${process.env.NODE_ENV}.env`)
+  path: path.resolve(__dirname,`../config/${NODE_ENV}.env`)
 });
 
 const mongoose = require("mongoose");
