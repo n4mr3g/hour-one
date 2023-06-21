@@ -3,20 +3,20 @@ import { signup } from "../../api/apiServiceJWT.jsx";
 import Navigation from "../Navigation/Navigation";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import findOffers from "../../App.jsx";
 import { User } from "../../dataTypes.jsx";
 
-import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import DOMPurify from "dompurify";
 
 const formSchema = Yup.object().shape({
   password: Yup.string()
     .required("Password is required")
     .min(8, "Password length should be at least 8 characters")
-    .max(16, "Password cannot exceed more than 16 characters"),
+    .max(50, "Password cannot exceed 50 characters"),
   confirmPassword: Yup.string()
     .required("Confirm Password is required")
     .oneOf([Yup.ref("password")], "Passwords do not match"),
@@ -26,7 +26,7 @@ const formSchema = Yup.object().shape({
   name: Yup.string()
     .required("Please enter your name")
     .min(3, "Name should be at least 3 characters")
-    .max(25, "Name cannot exceed more than 25 characters"),
+    .max(40, "Name cannot exceed 40 characters"),
 });
 
 export default function SignUp() {
@@ -49,13 +49,13 @@ export default function SignUp() {
     const newUserData: User = {
       name: clean(data.name),
       email: clean(data.email),
-      password: data.password,
+      password: clean(data.password),
       image: clean(""),
     };
 
-    const res: string | void = await signup(newUserData);
+    const res = await signup(newUserData);
     let accessToken: string = "";
-    if (res === "") {
+    if (res.error === '409') {
       alert("Email already in use");
       reset();
     } else {
