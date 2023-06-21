@@ -15,7 +15,6 @@ beforeAll(async () => {
   await connection.post("/signup").send(mocks.userCreationData.valid);
   const res = await connection.post("/login").send(mocks.validLoginCredentials);
   token = res.body.accessToken;
-  console.log(token, "token=========");
 });
 
 afterAll(async () => {
@@ -26,7 +25,6 @@ afterAll(async () => {
 
 describe("Offer routes: POST /offer", () => {
   it.only("should return 200 & valid content-type when POSTing /offer", async () => {
-    console.log(token, "the tokkeennnenen");
     await connection
       .post("/offer")
       .set({ Authorization: `Bearer ${token}` })
