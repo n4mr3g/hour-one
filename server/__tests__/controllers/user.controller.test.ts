@@ -6,13 +6,13 @@ import supertest from "supertest";
 
 let connection: supertest.SuperTest<supertest.Test>;
 beforeAll(async () => {
-  connection = await request(app);
+  connection = request(app);
 });
 
 afterAll(async () => {
   await mongoose.connection.dropDatabase();
   await mongoose.connection.close();
-  await server.close();
+  server.close();
 });
 
 describe("Signup routes: POST /signup", () => {

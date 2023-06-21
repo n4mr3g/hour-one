@@ -1,4 +1,4 @@
-.form-container {
+/* .form-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@
   min-width: 350px;
 }
 
-.form--title {
+.form-title {
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -24,10 +24,9 @@
 .input-group {
   display: flex;
   flex-direction: column;
-  text-transform: uppercase;
-  font-weight: 600;
   gap: 10px;
 }
+
 
 .input-box {
   font-family: inherit;
@@ -40,6 +39,7 @@
 
 .input-label {
   letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .create-btn {
@@ -63,4 +63,4 @@
 
 textarea {
   resize: none;
-}
+} */

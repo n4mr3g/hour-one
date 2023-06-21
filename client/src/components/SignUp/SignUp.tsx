@@ -1,115 +1,150 @@
-import Navigation from "../Navigation/Navigation";
 import "./signup.css";
-import auth from "../../utils/auth";
 import { signup } from "../../api/apiServiceJWT.jsx";
+import Navigation from "../Navigation/Navigation";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { loginAction } from "../../redux/actions.js";
-import { storeApp } from "../../redux/store.js";
+import React from "react";
 import findOffers from "../../App.jsx";
 import { User } from "../../dataTypes.jsx";
 
+import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
+import DOMPurify from "dompurify";
+
+const formSchema = Yup.object().shape({
+  password: Yup.string()
+    .required("Password is required")
+    .min(8, "Password length should be at least 8 characters")
+    .max(16, "Password cannot exceed more than 16 characters"),
+  confirmPassword: Yup.string()
+    .required("Confirm Password is required")
+    .oneOf([Yup.ref("password")], "Passwords do not match"),
+  email: Yup.string()
+    .required("Please enter a valid email address")
+    .email("Please enter a valid email address"),
+  name: Yup.string()
+    .required("Please enter your name")
+    .min(3, "Name should be at least 3 characters")
+    .max(25, "Name cannot exceed more than 25 characters"),
+});
+
 export default function SignUp() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    mode: "onTouched",
+    resolver: yupResolver(formSchema),
+  });
+
+  console.log(errors);
   let navigate = useNavigate();
-  // const dispatch = useDispatch();
-  // const userInfo = useSelector((state) => state.userInfo);
-  // const userInfo = storeApp.getState().userInfo;
 
+  const clean = DOMPurify.sanitize;
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    if (!name || !email || !password) {
-      alert("Please enter details correctly");
-      return;
-    }
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const newUserData: User = {
-      name: name,
-      email: email,
-      password: password,
-      image: "",
+      name: clean(data.name),
+      email: clean(data.email),
+      password: data.password,
+      image: clean(""),
     };
 
     const res: string | void = await signup(newUserData);
-    let accessToken: string = '';
-    if (res === '') {
-      // console.log("!res == true");
-      alert("User already exists");
-      setName("");
-      setEmail("");
-      setPassword("");
+    let accessToken: string = "";
+    if (res === "") {
+      alert("Email already in use");
+      reset();
     } else {
-      // console.log("RES BODY :", res);
       accessToken = res as string;
-      // console.log("accessToken", accessToken);
       localStorage.setItem("accessToken", accessToken);
-      setName("");
-      setEmail("");
-      setPassword("");
-
+      reset(); // Needed?
+      navigate("/app/signin");
     }
-    if (accessToken) navigate("/app/signin");
-  }
+  };
 
   return (
     <>
       <Navigation findOffers={findOffers} />
       <div className="form-container">
-        <form className="form-itself" onSubmit={handleSubmit}>
-          <div className="form--title"> Join Hour One </div>
+        <form className="form-itself" onSubmit={handleSubmit(onSubmit)}>
+          <h2 className="form-title"> Join Hour One </h2>
+
           <div className="input-group">
             <label className="input-label" htmlFor="name">
-              Fullname
+              Full name
             </label>
+
             <input
-              className="input-box"
+              id="name"
               type="text"
-              name="name"
-              value={name}
-              placeholder="Please enter you fullname"
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
+              autoFocus={true}
+              placeholder="Your full name"
+              className="input-box"
+              {...register("name", { required: true })}
+              aria-invalid={errors.name ? "true" : "false"}
             />
           </div>
+          {errors.name && <p role="alert">{errors.name.message}</p>}
+
           <div className="input-group">
             <label className="input-label" htmlFor="email">
               Email
             </label>
+
             <input
+              id="email"
+              type="email"
+              placeholder="E-mail"
+              autoComplete="username"
               className="input-box"
-              type="text"
-              name="name"
-              value={email}
-              placeholder="Enter a valid email"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
+              {...register("email", { required: true })}
+              aria-invalid={errors.email ? "true" : "false"}
             />
           </div>
+          {errors.email && <p role="alert">{errors.email.message}</p>}
+
           <div className="input-group">
             <label className="input-label" htmlFor="password">
               Password
             </label>
+
             <input
-              className="input-box"
+              {...register("password", { required: true, minLength: 8 })}
+              id="password"
               type="password"
-              name="name"
-              value={password}
-              placeholder="Length of minimum 8 characters"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
+              placeholder="Password"
+              autoComplete="new-password"
+              className="input-box"
+              aria-invalid={errors.password ? "true" : "false"}
             />
+            {errors.password && <p role="alert">{errors.password.message}</p>}
+
+            <label className="input-label" htmlFor="confirmPassword">
+              Confirm Password
+            </label>
+            <input
+              {...register("confirmPassword", {
+                required: true,
+                minLength: 8,
+              })}
+              id="confirmPassword"
+              type="password"
+              placeholder="Confirm your password"
+              autoComplete="new-password"
+              className="input-box"
+              aria-invalid={errors.confirmPassword ? "true" : "false"}
+            />
+            {errors.confirmPassword && (
+              <p role="alert">{errors.confirmPassword.message}</p>
+            )}
           </div>
 
           <button className="create-btn" type="submit">
-            SignUp
+            Sign Up
           </button>
         </form>
       </div>
