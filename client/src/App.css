@@ -17,3 +17,9 @@
   flex-direction: column;
   align-items: center;
 }
+
+p[role="alert"] {
+  position: relative;
+  top: 0px;
+  color: red;
+}

@@ -11,7 +11,7 @@ let token: string;
 let connection: supertest.SuperTest<supertest.Test>;
 
 beforeAll(async () => {
-  connection = await request(app);
+  connection = request(app);
   await connection.post("/signup").send(mocks.userCreationData.valid);
   const res = await connection.post("/login").send(mocks.validLoginCredentials);
   token = res.body.accessToken;
@@ -24,7 +24,7 @@ afterAll(async () => {
 });
 
 describe("Offer routes: POST /offer", () => {
-  it.only("should return 200 & valid content-type when POSTing /offer", async () => {
+  it("should return 200 & valid content-type when POSTing /offer", async () => {
     await connection
       .post("/offer")
       .set({ Authorization: `Bearer ${token}` })

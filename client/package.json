@@ -11,13 +11,16 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.1.1",
     "@reduxjs/toolkit": "^1.9.5",
     "dompurify": "^3.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.45.0",
     "react-redux": "^8.0.7",
     "react-router-dom": "^6.12.1",
-    "redux": "^4.2.1"
+    "redux": "^4.2.1",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.5",
