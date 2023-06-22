@@ -21,7 +21,11 @@ export default function SearchBar({ findOffers }: { findOffers: Function }) {
         placeholder="Search..."
         onChange={(e) => setQuery(e.target.value)}
       ></input>
-      <span className="material-symbols-outlined search-icon">search</span>
+
+      {/* TODO: search function */}
+      <a href="#" className="search-button">
+        <span className="material-symbols-outlined search-icon">search</span>
+        </a>
     </form>
   );
 }

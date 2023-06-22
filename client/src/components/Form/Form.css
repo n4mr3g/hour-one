@@ -1,31 +1,31 @@
 .form-container {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .form-itself {
-  margin: 10px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   border: 2px solid black;
   border-radius: 10px;
   padding: 20px;
-  max-width: 500px;
+  min-width: 350px;
+  min-width: 60vw;
 }
 
-.form--title {
+.form-title {
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
-  text-transform: uppercase;
-  font-weight: 600;
-  gap: 5px;
+  gap: 10px;
 }
 
 .input-box {
@@ -39,25 +39,31 @@
 
 .input-label {
   letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .create-btn {
+  border: none;
   border-radius: 25px;
-  border: 2px solid black;
-  background-color: transparent;
+  background-color: black;
+  color: white;
   font-family: inherit;
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 4px;
-  padding: 10px;
+  height: 60px;
   transition: all 0.5s;
+  margin-top: 30px;
 }
 
 .create-btn:hover {
-  background-color: black;
-  color: white;
+  background-color: white;
+  cursor: pointer;
+  color: black;
   letter-spacing: 6px;
+  border: black 2px solid;
 }
 
 textarea {

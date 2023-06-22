@@ -31,6 +31,7 @@ export default function Navigation({ findOffers }: { findOffers: Function }) {
         <Link to={"/app"} className="logo same-width">
           Hour One
         </Link>
+        
         <SearchBar findOffers={findOffers} />
         <div className="nav-options same-width ">
           <div className="mylist-wrapper">
