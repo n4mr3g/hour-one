@@ -1,6 +1,5 @@
 import { Offer } from "../dataTypes";
 
-
 export async function postOffer(offer: Offer) {
   const res = await fetch("http://localhost:4000/offer", {
     method: "POST",
@@ -13,7 +12,6 @@ export async function postOffer(offer: Offer) {
 }
 
 export async function fetchOffersFromServer(): Promise<Offer[]> {
-  
   const response: Response = await fetch("http://localhost:4000/offer", {
     method: "GET",
     headers: {
@@ -22,8 +20,6 @@ export async function fetchOffersFromServer(): Promise<Offer[]> {
   });
 
   const accessToken = localStorage.getItem("accessToken");
-
-
   const res: Offer[] = await response.json();
 
   return res ? res : [];
